@@ -58,3 +58,10 @@ where exists(select 1
 from employees e
 where
 e.department_id=d.department_id);
+
+-- 5.Correlated subquery
+SELECT name, salary
+FROM employees e1
+WHERE salary > (SELECT AVG(salary) 
+                FROM employees e2 
+                WHERE e2.department_id = e1.department_id);
